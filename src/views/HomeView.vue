@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main>
+    <div>
+      <CarouselComponent />
+    </div>
+    <div>
+      <CreateItineraryComponent @itinerary-created="handleItineraryCreated" />
+    </div>
+    <div>
+      <RecommendCategoryComponent />
+    </div>
+  </main>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CarouselComponent from "@/components/common/CarouselComponent.vue";
+import CreateItineraryComponent from "@/components/home/CreateItineraryComponent.vue";
+import RecommendCategoryComponent from "@/components/home/RecommendCategoryComponent.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    CarouselComponent,
+    CreateItineraryComponent,
+    RecommendCategoryComponent,
+  },
+};
 </script>
+
+<style>
+main {
+  text-align: center;
+}
+</style>
