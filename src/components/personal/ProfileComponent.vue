@@ -200,13 +200,18 @@ const articles = ref([
 .edit-profile-btn {
   align-self: flex-start;
   margin-left: auto;
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #7c4dff;
+  color: #ffffff;
   padding: 8px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-profile-btn:hover {
+  background-color: #6a3bff;
 }
 
 .content-tabs {

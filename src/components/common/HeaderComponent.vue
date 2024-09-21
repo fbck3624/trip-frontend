@@ -4,7 +4,12 @@
       <h1 class="website-name">TripTrekker</h1>
     </div>
     <div class="right-section">
-      <nav class="navigation">
+      <button class="menu-toggle" @click="toggleMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="navigation" :class="{ 'show-menu': isMenuOpen }">
         <ul>
           <li>
             <router-link
@@ -16,9 +21,9 @@
           </li>
           <li>
             <router-link
-              to="#my-trips"
-              :class="{ active: isActive('#my-trips') }"
-              @click="setActivePage('#my-trips')"
+              to="create-itinerary"
+              :class="{ active: isActive('create-itinerary') }"
+              @click="setActivePage('create-itinerary')"
               >我的行程</router-link
             >
           </li>
@@ -72,9 +77,11 @@ import { useRouter } from "vue-router";
 const searchQuery = ref("");
 const activePage = ref("#home");
 const router = useRouter();
+const isMenuOpen = ref(false);
 
 const setActivePage = (page) => {
   activePage.value = page;
+  isMenuOpen.value = false;
 };
 
 const isActive = (page) => {
@@ -85,10 +92,13 @@ const goToPersonal = () => {
   router.push("/personal");
   setActivePage("");
 };
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
 </script>
 
 <style scoped>
-/* 保持原有樣式不變 */
 .header {
   width: 90%;
   display: flex;
@@ -130,11 +140,11 @@ const goToPersonal = () => {
   text-decoration: none;
   font-weight: bold;
   font-size: 20px;
-  padding: 5px 10px; /* 為了讓顏色區塊顯示更明顯 */
+  padding: 5px 10px;
 }
 
 .navigation a.active {
-  background-color: rgb(224, 217, 217); /* 當前頁籤區塊顏色變深 */
+  background-color: rgb(224, 217, 217);
   border-radius: 4px;
 }
 
@@ -164,7 +174,64 @@ const goToPersonal = () => {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
+
 .avatar:hover {
   transform: scale(1.2);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  transition: all 0.3s linear;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .navigation.show-menu {
+    max-height: 300px;
+  }
+
+  .navigation ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navigation li {
+    margin: 10px 0;
+  }
+
+  .search-bar {
+    display: none;
+  }
 }
 </style>

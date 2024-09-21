@@ -46,7 +46,9 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="submit-btn">建立行程</button>
+        <router-link to="/create-itinerary">
+          <button type="submit" class="submit-btn">建立行程</button>
+        </router-link>
       </div>
     </form>
   </div>

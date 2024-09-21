@@ -14,7 +14,7 @@
 
 <script>
 import CarouselComponent from "@/components/common/CarouselComponent.vue";
-import CreateItineraryComponent from "@/components/home/CreateItineraryComponent.vue";
+import CreateItineraryComponent from "@/components/home/CreateItineraryBtnComponent.vue";
 import RecommendCategoryComponent from "@/components/home/RecommendCategoryComponent.vue";
 
 export default {

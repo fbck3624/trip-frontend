@@ -86,6 +86,7 @@
 .social-icons {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
 
 .social-icons a {
@@ -104,5 +105,21 @@
   padding-top: 15px;
   color: #aaa;
   font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
 }
 </style>
